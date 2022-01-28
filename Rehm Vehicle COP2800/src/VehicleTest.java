@@ -8,6 +8,7 @@ public class VehicleTest {
         myCar1 = new Vehicle();
         Scanner keyboard = new Scanner(System.in);
         int milesToDrive;
+        String lastOilChange;
 
         // Setting year, miles and mpg of myCar1
         myCar1.setYear(1997);
@@ -25,6 +26,13 @@ public class VehicleTest {
         // Calculating and outputting new miles value
         myCar1.drive(milesToDrive);
         System.out.println("Vehicle's Updated Mileage: " + myCar1.getMiles());
+
+        // Receiving input from user regarding last oil change
+        System.out.print("Enter the date of your last oil change (yyyy-MM-dd): ");
+
+        // Calculating and outputting next oil change date
+        lastOilChange = keyboard.next();
+        System.out.println(myCar1.nextOilChange(lastOilChange));
         System.out.println();
 
         // Declare new Vehicle reference variable myCar2 and instantiate object
@@ -46,5 +54,12 @@ public class VehicleTest {
         // Calculating and outputting new miles value
         myCar2.drive(milesToDrive);
         System.out.println("Vehicle's Updated Mileage: " + myCar2.getMiles());
+
+        // Receiving input from user regarding last oil change
+        System.out.print("Enter the date of your last oil change (yyyy-MM-dd): ");
+
+        // Calculating and outputting next oil change date
+        lastOilChange = keyboard.next();
+        System.out.println(myCar2.nextOilChange(lastOilChange));
     }
 }

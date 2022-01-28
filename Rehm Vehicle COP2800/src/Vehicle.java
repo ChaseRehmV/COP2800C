@@ -3,13 +3,22 @@
 // Create a new class in the same project to hold your main() method.
 // Interact with this class from your main() method.
 
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.temporal.TemporalAmount;
+
 public class Vehicle {
 
     // private fields / internal data
-    private int year;  				// year the vehicle was manufactured
-    private int miles;				// miles on the total odometer
-    private double mpg; 			// miles per gallon the vehicle gets
-    private String model;           // model of the vehicle
+
+    // year the vehicle was manufactured
+    private int year;
+    // miles on the total odometer
+    private int miles;
+    // miles per gallon the vehicle gets
+    private double mpg;
+    // model of the vehicle
+    private String model;
 
 
     // public methods / operations
@@ -20,47 +29,64 @@ public class Vehicle {
 
     // setters (mutators) and getters (accessors)
     public int getYear() {
-        return year;			// return THIS object's year value
+        // return THIS object's year value
+        return year;
     }
 
     public void setYear(int year) {
-        this.year = year;		// set THIS object's year to argument (year) value
+        // set THIS object's year to argument (year) value
+        this.year = year;
     }
 
     public int getMiles() {
-        return miles;			// return THIS object's miles value
+        // return THIS object's miles value
+        return miles;
     }
 
     public void setMiles(int miles) {
-        this.miles = miles;		// set THIS object's miles to argument (miles) value
+        // set THIS object's miles to argument (miles) value
+        this.miles = miles;
     }
 
     public double getMpg() {
-        return mpg;				// return THIS object's mpg value
+        // return THIS object's mpg value
+        return mpg;
     }
 
     public void setMpg(double mpg) {
-        this.mpg = mpg;			// set THIS object's mpg to argument (mpg) value
+        // set THIS object's mpg to argument (mpg) value
+        this.mpg = mpg;
     }
 
     public String getModel() {
-        return model;           // return THIS object's model name
+        // return THIS object's model name
+        return model;
     }
 
     public void setModel(String model) {
-        this.model = model;     // set THIS object's model name to argument (model) String value
+        // set THIS object's model name to argument (model) String value
+        this.model = model;
     }
 
     // instance methods
     public void drive(int miles) {
-        this.miles += miles;	// add argument miles value to THIS object's miles
+        // add argument miles value to THIS object's miles
+        this.miles += miles;
     }
 
     public void printInfo() {
+        // print out all the properties of THIS object
         System.out.println("--- VEHICLE INFORMATION ---");
         System.out.println("Year of Manufacture: " + this.getYear());
         System.out.println("Model Name: " + this.getModel());
         System.out.println("Mileage: " + this.getMiles());
         System.out.println("Miles Per Gallon: " + this.getMpg());
+    }
+
+    public String nextOilChange(String date) {
+        LocalDate lastOilChange = LocalDate.parse(date);
+        LocalDate nextOilChange = lastOilChange.plus(Period.ofMonths(3));
+        String output = ("Your next oil change should take place on: " + nextOilChange.toString());
+        return output;
     }
 }
