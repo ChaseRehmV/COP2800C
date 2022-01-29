@@ -14,6 +14,7 @@ public class VehicleTest {
         myCar1.setYear(1997);
         myCar1.setMiles(187900);
         myCar1.setMpg(36.5);
+        myCar1.setManufacturer("Ford");
         myCar1.setModel("Taurus");
 
         // Outputting myCar1 information
@@ -42,6 +43,7 @@ public class VehicleTest {
         myCar2.setYear(2008);
         myCar2.setMiles(78254);
         myCar2.setMpg(18.5);
+        myCar2.setManufacturer("Infiniti");
         myCar2.setModel("G20");
 
         // Outputting myCar2 information

@@ -5,6 +5,7 @@
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.temporal.ChronoUnit;
 import java.time.temporal.TemporalAmount;
 
 public class Vehicle {
@@ -17,6 +18,8 @@ public class Vehicle {
     private int miles;
     // miles per gallon the vehicle gets
     private double mpg;
+    // manufacturer of the vehicle
+    private String manufacturer;
     // model of the vehicle
     private String model;
 
@@ -68,6 +71,14 @@ public class Vehicle {
         this.model = model;
     }
 
+    public String getManufacturer() {
+        return this.manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        manufacturer = this.manufacturer;
+    }
+
     // instance methods
     public void drive(int miles) {
         // add argument miles value to THIS object's miles
@@ -83,10 +94,24 @@ public class Vehicle {
         System.out.println("Miles Per Gallon: " + this.getMpg());
     }
 
+    // takes in a date to be used as the user's last oil change. uses that to determine nextOilChange date and then compares that to currentDate
+    // outputs if the user is behind on an oil change, if the oil change is upcoming, or if the oil change is today
     public String nextOilChange(String date) {
+        LocalDate currentDay = LocalDate.now();
         LocalDate lastOilChange = LocalDate.parse(date);
         LocalDate nextOilChange = lastOilChange.plus(Period.ofMonths(3));
-        String output = ("Your next oil change should take place on: " + nextOilChange.toString());
+        long daysDifference = ChronoUnit.DAYS.between(currentDay, nextOilChange);
+        String output;
+
+        if (daysDifference < 0) {
+            daysDifference *= -1;
+            output = ("You are " + daysDifference + " day(s) past due for an oil change.");
+        } else if (daysDifference > 0) {
+            output = ("Your next oil change is in " + daysDifference + " day(s) on " + nextOilChange.toString());
+        } else {
+            output = ("It has been 3 months since your last oil change. You should get your oil changed today!");
+        }
+
         return output;
     }
 }
