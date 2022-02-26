@@ -1,14 +1,19 @@
-import java.util.Scanner;
-
+// ===== Code from file InventoryTag.java =====
 public class Scratch {
-    public static void main(String[] args) {
-        String firstName;
+    private int quantityRemaining;
 
+    public Scratch() {
+        quantityRemaining = 0;
+    }
 
-        Scanner keyboard = new Scanner(System.in);
-        firstName = keyboard.next();
+    public int getQuantityRemaining() {
+        return quantityRemaining;
+    }
 
-        System.out.println("Hello " + firstName + ", and welcome to CS Online!");
-
+    public void addInventory(int numItems) {
+        if (numItems > 10) {
+            quantityRemaining = quantityRemaining + numItems;
+        }
     }
 }
+// ===== end =====

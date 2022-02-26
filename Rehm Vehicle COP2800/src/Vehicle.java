@@ -94,9 +94,9 @@ public class Vehicle {
         System.out.println("Miles Per Gallon: " + this.getMpg());
     }
 
-    // takes in a date to be used as the user's last oil change. uses that to determine nextOilChange date and then compares that to currentDate
-    // outputs if the user is behind on an oil change, if the oil change is upcoming, or if the oil change is today
     public String nextOilChange(String date) {
+        // takes in a date to be used as the user's last oil change. uses that to determine nextOilChange date and then compares that to currentDate
+        // outputs if the user is behind on an oil change, if the oil change is upcoming, or if the oil change is today
         LocalDate currentDay = LocalDate.now();
         LocalDate lastOilChange = LocalDate.parse(date);
         LocalDate nextOilChange = lastOilChange.plus(Period.ofMonths(3));
