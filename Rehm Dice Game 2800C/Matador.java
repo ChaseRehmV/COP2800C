@@ -11,45 +11,20 @@ public class Matador {
         enum ActivePlayer {human, computer}
         int cpuPlayerNum;
         int playerNum;
-        int cpuPlayerScore = 0;
-        int playerScore = 0;
-        int currentTurnScore = 0;
         int die1;
         int die2;
         int diceSum;
-        Die playerD1 = new Die();
-        Die playerD2 = new Die();
-        Die cpuPlayerD1 = new Die();
-        Die cpuPlayerD2 = new Die();
-        String bannerChar = "*";
+        Die gameDie1 = new Die();
+        Die gameDie2 = new Die();
         String continueKey = "y";
         ActivePlayer activePlayer;
         activePlayer = ActivePlayer.human;
 
-
-
-        for (int i = 0; i < 6; ++i) {
-            if (i != 2) {
-                System.out.println(bannerChar.repeat(50));
-            } else {
-                System.out.print(bannerChar.repeat(14));
-                System.out.print(" !Welcome to Matador! ");
-                System.out.println(bannerChar.repeat(14));
-            }
-        }
-        System.out.println();
+        // matador welcome message
+        GameMechanics.printMatadorWelcome();
 
         // game rules explanation
-        System.out.println("In this dice game, you will play against a computer opponent.");
-        System.out.println("On each player's turn, that player will choose a number between 2 and 6.");
-        System.out.println("The player then rolls two dice:");
-        System.out.println("If a 1 appears on both dice, the player's score is reduced by 25 and it becomes the other's turn.");
-        System.out.println("If a 1 appears on only one die, nothing is added to the player's score and it becomes the other's turn.");
-        System.out.println("If a 1 does not appear on either die, the sum of the two dice is added to the player's score.");
-        System.out.println("    - if their chosen number appears on only one die, they roll again.");
-        System.out.println("    - if their chosen number appears on both dice, they win.");
-        System.out.println("    - if their chosen number did not appear on either die, it becomes the other's turn.");
-        System.out.println();
+        GameMechanics.printMatadorInstructions();
 
 
         System.out.println("***** GAME START *****");
@@ -60,8 +35,10 @@ public class Matador {
                 if (player1.overallScore > cpuPlayer.getOverallScore()) {
                     System.out.println("Your score has reached or surpassed 99! You win!");
                     GameMechanics.printVictory(player1.getName());
+                    break;
                 } else {
                     System.out.println("The computer's score has reach or surpassed 99! You lose!");
+                    break;
                 }
             } else if (activePlayer == ActivePlayer.human) {
                 System.out.print(player1.getName() + ", please choose your number between 2 and 6 for this turn: ");
@@ -70,8 +47,8 @@ public class Matador {
                     System.out.println("That's not a valid number! Please try again: ");
                     playerNum = keyboard.nextInt();
                 }
-                die1 = playerD1.rollDie();
-                die2 = playerD2.rollDie();
+                die1 = gameDie1.rollDie();
+                die2 = gameDie2.rollDie();
                 diceSum = die1 + die2;
                 if (die1 == playerNum && die2 == playerNum) {
                     System.out.println("You rolled your number on both die! Congratulations, " + player1.getName() + ", you win the game!");
@@ -79,14 +56,12 @@ public class Matador {
                     break;
                 } else if (die1 == 1 && die2 == 1) {
                     System.out.println("You rolled a 1 on both die. You lose 25 points. It is now the computer's turn.");
-                    currentTurnScore = 0;
                     player1.decreaseScore(25);
                     activePlayer = ActivePlayer.computer;
                     GameMechanics.printPlayerSwitch(player1.getOverallScore(), cpuPlayer.getOverallScore());
                     continue;
                 } else if (die1 == 1 || die2 == 1) {
                     System.out.println("You rolled a 1 on one of the die. You gain no points. It is now the computer's turn.");
-                    currentTurnScore = 0;
                     activePlayer = ActivePlayer.computer;
                     GameMechanics.printPlayerSwitch(player1.getOverallScore(), cpuPlayer.getOverallScore());
                     continue;
@@ -108,8 +83,8 @@ public class Matador {
             } else {
                 System.out.println("The computer will now begin rolling.");
                 cpuPlayerNum = randGen.nextInt(5) + 2;
-                die1 = playerD1.rollDie();
-                die2 = playerD2.rollDie();
+                die1 = gameDie1.rollDie();
+                die2 = gameDie2.rollDie();
                 diceSum = die1 + die2;
                 if (die1 == cpuPlayerNum && die2 == cpuPlayerNum) {
                     System.out.println("The computer rolled their number on both die! Sorry, " + player1.getName() + ", you lose the game!");
@@ -142,6 +117,3 @@ public class Matador {
         }
     }
 }
-
-
-/*cpuPlayerNum = randGen.nextInt(5) + 2;*/
