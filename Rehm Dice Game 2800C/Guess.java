@@ -16,26 +16,14 @@ public class Guess {
         // new Scanner object for accepting user input
         Scanner keyboard = new Scanner(System.in);
 
-        // bannerChar for welcome message and continueKey for main while loop sentinel value
-        String bannerChar = "*";
+        // continueKey for main while loop sentinel value
         String continueKey = "y";
 
         // welcome banner message
-        for (int i = 0; i < 6; ++i) {
-            if (i != 2) {
-                System.out.println(bannerChar.repeat(50));
-            } else {
-                System.out.print(bannerChar.repeat(11));
-                System.out.print(" Welcome to the 3 Roll Bet! ");
-                System.out.println(bannerChar.repeat(11));
-            }
-        }
-        System.out.println();
+        GameMechanics.printGuessWelcome();
 
         // game rules explanation
-        System.out.println("First, choose a number between 2 and 12. Then you will roll a pair of dice 3 times.");
-        System.out.println("If the sum of the dice equals your number within the 3 rolls, you win! Good luck!");
-        System.out.println();
+        GameMechanics.printGuessInstructions();
 
         // user chooses their number
         System.out.print("You must choose a number between 2 and 12: ");

@@ -37,7 +37,7 @@ public class Matador {
                     GameMechanics.printVictory(player1.getName());
                     break;
                 } else {
-                    System.out.println("The computer's score has reach or surpassed 99! You lose!");
+                    System.out.println("The computer's score has reached or surpassed 99! You lose!");
                     break;
                 }
             } else if (activePlayer == ActivePlayer.human) {
