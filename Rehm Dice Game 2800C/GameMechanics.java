@@ -1,9 +1,11 @@
+import java.util.Scanner;
+
 public class GameMechanics {
 
     private static String bannerChar = "*";
     private static String spaceChar = " ";
 
-    public static void printPlayerSwitch(int playerScore, int computerScore) {
+    public static void printPlayerSwitch(Player player1, Player computer) {
         for (int i = 0; i < 5; ++i) {
             if (i != 2) {
                 System.out.println(bannerChar.repeat(50));
@@ -11,7 +13,7 @@ public class GameMechanics {
                 System.out.print(bannerChar.repeat(15));
                 System.out.print(" !!Switch Players!! ");
                 System.out.println(bannerChar.repeat(15));
-                System.out.println(spaceChar.repeat(6)+ "Player score: " + playerScore + spaceChar.repeat(4) + "Computer score: " + computerScore + spaceChar.repeat(4));
+                System.out.println(spaceChar.repeat(6)+ "Player score: " + player1.getOverallScore() + spaceChar.repeat(4) + "Computer score: " + computer.getOverallScore() + spaceChar.repeat(4));
             }
         }
     }
@@ -73,5 +75,17 @@ public class GameMechanics {
         }
         System.out.println();
 
+    }
+
+    public static int playerSelectNumber(Player player1) {
+        int playerNum;
+        Scanner keyboard = new Scanner(System.in);
+        System.out.print(player1.getName() + ", please choose your number between 2 and 6 for this turn: ");
+        playerNum = keyboard.nextInt();
+        while (playerNum < 2 || playerNum > 6) {
+            System.out.println("That's not a valid number! Please try again: ");
+            playerNum = keyboard.nextInt();
+        }
+        return playerNum;
     }
 }
