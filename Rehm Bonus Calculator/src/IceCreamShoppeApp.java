@@ -7,15 +7,18 @@ public class IceCreamShoppeApp {
         int posReviews;
         String sentinelKey = "y";
 
+        // beginning of main program loop
         while (sentinelKey.equalsIgnoreCase("y")) {
             System.out.print("Please enter the number of weeks worked: ");
             weeksWorked = keyboard.nextInt();
+            // validate the weeksWorked is a positive number
             while (weeksWorked < 0 ) {
                 System.out.print("That's not a valid number for weeks worked. Please enter a positive number: ");
                 weeksWorked = keyboard.nextInt();
             }
             System.out.print("Please enter the number of positive reviews received: ");
             posReviews = keyboard.nextInt();
+            //validate the posReviews is a positive number
             while (posReviews < 0) {
                 System.out.print("That's not a valid number for reviews received. Please enter a positive number: ");
                 posReviews = keyboard.nextInt();

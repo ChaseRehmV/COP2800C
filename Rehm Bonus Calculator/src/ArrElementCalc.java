@@ -1,6 +1,7 @@
 public class ArrElementCalc {
 
-    public double calcAvg(double[] array) {
+    // method for
+    public static double calcAvg(double[] array) {
         double avg;
         double sum = 0;
         double numOfElements = (double) array.length;
@@ -12,7 +13,7 @@ public class ArrElementCalc {
         return sum / numOfElements;
     }
 
-    public int calcAvg(int[] array) {
+    public static int calcAvg(int[] array) {
         int avg;
         int sum = 0;
         int numOfElements = array.length;
