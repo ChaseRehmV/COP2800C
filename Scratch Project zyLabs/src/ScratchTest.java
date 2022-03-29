@@ -1,29 +1,30 @@
 import java.util.Random;
 import java.util.Scanner;
+import java.io.Serializable;
 
 public class ScratchTest {
-    public static void main (String [] args) {
-        Scanner scnr = new Scanner(System.in);
-        String simonPattern;
-        String userPattern;
-        int userScore;
-        int i;
+    private int num;
 
-        userScore = 0;
-
-        simonPattern = scnr.next();
-        userPattern  = scnr.next();
-
-        for (i = 0; i < userPattern.length(); ++i) {
-            if (simonPattern.charAt(i) == userPattern.charAt(i)) {
-                userScore++;
-            } else {
-                break;
-            }
-        }
-
-        System.out.println("userScore: " + userScore);
-
-        return;
+    public Number(int n) {
+        num = n;
     }
+
+    public String toString() {
+        /* Type your code here */
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int n) {
+        num = n;
+    }
+
+    public static void main (String [] args) {
+            Scanner scnr = new Scanner(System.in);
+            int inputNum = scnr.nextInt();
+            Number yourNum = new Number(inputNum);
+            System.out.print(yourNum);
+        }
 }
