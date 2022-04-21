@@ -1,26 +1,20 @@
 public class Byleth extends Fighter implements SwordUse, WhipTool {
-    private final int bylethAttackPower = 25;
-    private final int bylethTotalHealth = 250;
-    private final int bylethSwordDmg = 12;
-    private final String name = "Byleth";
+    private final int swordDmg = 12;
 
     Byleth() {
-        this.setBaseAttackPower(bylethAttackPower);
-        this.setCurrentHealth(bylethTotalHealth);
-        this.setTotalHealth(bylethTotalHealth);
-        this.setName(name);
+        super(250, 25, "Byleth");
     }
 
     @Override
     public void swordSwipe(Fighter opponent) {
-        int damage = this.getBaseAttackPower() + bylethSwordDmg;
+        int damage = this.getBaseAttackPower() + swordDmg;
         int health = opponent.getCurrentHealth();
         opponent.setCurrentHealth(health - damage);
     }
 
     @Override
     public void swordStab(Fighter opponent) {
-        int damage = this.getBaseAttackPower() + bylethSwordDmg + 5;
+        int damage = this.getBaseAttackPower() + swordDmg + 5;
         int health = opponent.getCurrentHealth();
         opponent.setCurrentHealth(health - damage);
     }

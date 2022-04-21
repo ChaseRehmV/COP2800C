@@ -5,6 +5,14 @@ public abstract class Fighter {
     private int baseAttackPower;
     private String name;
 
+    Fighter(int totalHealth, int baseAttackPower, String name) {
+        this.currentHealth = totalHealth;
+        this.totalHealth = totalHealth;
+        this.baseAttackPower = baseAttackPower;
+        this.name = name;
+        this.canAttack = true;
+    }
+
     public String getName() {
         return name;
     }
