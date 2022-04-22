@@ -49,22 +49,32 @@ public abstract class Fighter {
         this.canAttack = canAttack;
     }
 
+    // Each of the below attack methods takes in a Fighter object as a method parameter.
+    // In the main program, the method is always called by a character specific subclass of the Fighter class.
+    // The method taking in a Fighter object but then calling the methods needed from the character subclass
+    // is a form of derived/base class reference conversion. This is a form of Polymorphism.
     public void baseAttack(Fighter opponent) {
         int damage = this.baseAttackPower;
         int health = opponent.getCurrentHealth();
         opponent.setCurrentHealth(health - damage);
+        System.out.println(this.getName() + " hits " + opponent.getName() + " with a standard attack!");
+        FightingGame.printFighterHealths(this, opponent);
     }
 
     public void baseAttackLight(Fighter opponent) {
         int damage = this.baseAttackPower - 5;
         int health = opponent.getCurrentHealth();
         opponent.setCurrentHealth(health - damage);
+        System.out.println(this.getName() + " jabs " + opponent.getName() + " with a light attack!");
+        FightingGame.printFighterHealths(this, opponent);
     }
 
     public void baseAttackStrong(Fighter opponent) {
         int damage = this.baseAttackPower + 5;
         int health = opponent.getCurrentHealth();
         opponent.setCurrentHealth((health - damage));
+        System.out.println(this.getName() + " nails " + opponent.getName() + " with a heavy attack!");
+        FightingGame.printFighterHealths(this, opponent);
     }
 
 }

@@ -1,5 +1,7 @@
 public class FightingGame {
 
+    // a "status update" method to be a little more DRY instead of posting this block after every attack.
+    // it is called in every attack method
     public static void printFighterHealths(Fighter fighter1, Fighter fighter2) {
         System.out.println(fighter1.getName() + " health: " + fighter1.getCurrentHealth());
         System.out.println(fighter2.getName() + " health: " + fighter2.getCurrentHealth());
@@ -10,35 +12,21 @@ public class FightingGame {
         Byleth byleth = new Byleth();
         Sephiroth sephiroth = new Sephiroth();
 
-        System.out.println("Sephiroth enters the fight!");
-        System.out.println("Byleth enters the fight!");
-
+        // So I originally had plans to wrap this in a while loop that would allow users to select from a list
+        // of attacks or moves that were available for each character subclass. But school and work and other life
+        // stuff got in the way and so this is what I was able to get done :/
+        System.out.println(sephiroth.getName() + " enters the fight!");
+        System.out.println(byleth.getName() + " enters the fight!");
         FightingGame.printFighterHealths(byleth, sephiroth);
 
-        System.out.println("Byleth hits Sephiroth with a standard attack!");
         byleth.baseAttack(sephiroth);
 
-        FightingGame.printFighterHealths(byleth, sephiroth);
-
-        System.out.println("Sephiroth nails Byleth with a strong attack!");
         sephiroth.baseAttackStrong(byleth);
 
-        FightingGame.printFighterHealths(byleth, sephiroth);
-
-        System.out.println("Sephiroth stabs Byleth with his sword!");
         sephiroth.swordStab(byleth);
 
-        FightingGame.printFighterHealths(byleth, sephiroth);
-
-        System.out.println("Sephiroth hits Byleth with a magic attack!");
         sephiroth.attackSpell(byleth);
 
-        FightingGame.printFighterHealths(byleth, sephiroth);
-
-        System.out.println("Byleth hits Sephiroth with a whip attack! Sephiroth can't move!");
         byleth.immobilizeWhipMove(sephiroth);
-
-        FightingGame.printFighterHealths(byleth, sephiroth);
-
     }
 }
